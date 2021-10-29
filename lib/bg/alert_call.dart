@@ -1,3 +1,10 @@
+import 'dart:async';
+
+import 'package:fire_service/Strings/strings.dart';
+import 'package:fire_service/bg/sos_mode.dart';
+import 'package:fire_service/map/get_user_location.dart';
+import 'package:fire_service/widgets/app_bar_red.dart';
+import 'package:fire_service/widgets/bottom_bar_red.dart';
 import 'package:fire_service/xd/xd_fire_stations_alert.dart';
 import 'package:fire_service/xd/xd_menu_alert.dart';
 import 'package:fire_service/xd/xd_notifications_alert.dart';
@@ -22,258 +29,96 @@ class AlertCall extends StatelessWidget {
     final normal_red = GoogleFonts.montserrat(fontStyle: FontStyle.normal, fontSize: 15, fontWeight: FontWeight.w400, color: const Color(0xffff365d));
     final normal_black = GoogleFonts.montserrat(fontStyle: FontStyle.normal, fontSize: 13, fontWeight: FontWeight.w400, color: const Color(0xffaaaaaa));
 
+    Timer(Duration(seconds: 2), () => Navigator.push(context,
+        MaterialPageRoute(builder: (_)=> SOSMode())));
+
+
     return Scaffold(
       backgroundColor: const Color(0xfffc617e),
       body: Stack(
         children: <Widget>[
-          Pinned.fromPins(
-            Pin(start: -2.1, end: -0.7),
-            Pin(size: 106.2, start: 1.0),
-            child:
-            // Adobe XD layer: 'AppBar' (group)
-            Stack(
-              children: <Widget>[
-                Pinned.fromPins(
-                  Pin(start: 0.0, end: 0.0),
-                  Pin(start: 0.0, end: 0.0),
-                  child:
-                  // Adobe XD layer: 'appBar' (shape)
-                  SvgPicture.string(
-                    _svg_a0zp2r,
-                    allowDrawingOutsideViewBox: true,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(40,10,40,0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          PageLink(
-                            links: [
-                              PageLinkInfo(
-                                transition: LinkTransition.PushRight,
-                                ease: Curves.easeOut,
-                                duration: 0.5,
-                                pageBuilder: () => XDMenuAlert(),
-                              ),
-                            ],
-                            child: Container(
-                              height: 40,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: const AssetImage('assets/menu.png'),
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Text(
-                            '911',
-                            style: title ),
-                          Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                              BorderRadius.all(Radius.elliptical(9999.0, 9999.0)),
-                              image: DecorationImage(
-                                image: const AssetImage(''),
-                                fit: BoxFit.cover,
-                              ),
-                              border: Border.all(
-                                  width: 3.0, color: const Color(0xffffffff)),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          AppBarRed(),
           Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  color: const Color(0xffffffff),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0x26000000), offset: Offset(0, 0),
-                      blurRadius: 20,
-                    ),
-                  ],
-                ),
-                child: Container(
-                  width: width*0.6,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: new AssetImage('assets/menu.png'),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                child:
-                 Padding(
-                   padding: const EdgeInsets.fromLTRB(30,20,30,20),
-                   child: Column(
-                      children: [
-                        Text(
-                          'Alerting Fire Service…',
-                          style: bold_red
-                        ),
-                        SizedBox(height: 5.0),
-                        Text(
-                          'Your location coordinates are:',
-                          style: bold_black
-                        ),
-                        SizedBox(height: 5.0),
-                        SvgPicture.string(
-                          _svg_otp6zh,
-                          allowDrawingOutsideViewBox: true,
-                          fit: BoxFit.fill,
-                        ),
-                        SizedBox(height: 5.0),
-                        Text(
-                          'Lat: 5.57888  |  Long: -0.23261\nSam Street, Accra,\nGreater Accra, GH',
-                          style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 13,
-                            color: const Color(0xffaaaaaa),
-                            fontWeight: FontWeight.w200,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                 ),
-                )
-              ),
-              SizedBox(height: 35),
-              PageLink(
-                links: [
-                  PageLinkInfo(
-                    transition: LinkTransition.Fade,
-                    ease: Curves.easeOut,
-                    duration: 0.3,
-                    pageBuilder: () => Home(),
-                  ),
-                ],
-                child:
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height:20.0),
                 Container(
-                  // margin: EdgeInsets.all(20),
+                  width: width*0.8,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: const Color(0xffffffff),
+                    borderRadius: BorderRadius.circular(20.0),
+                    color: white,
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0x26000000),
+                        color: shadowColor,
                         offset: Offset(0, 0),
                         blurRadius: 20,
                       ),
                     ],
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(15,8,15,8),
-                    child: Text('Cancel',style: bold_red
+                  child:
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Alerting Fire Service…',
+                          style: boldRed,
+                          textAlign: TextAlign.center,
+                        ),
+
+                        SizedBox(height: 10.0),
+                        Text(
+                          'Your location is:',
+                          style: smallBlack,
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 5.0),
+                        Row(
+                          children: [
+                            Expanded(
+                                child: Container(
+                                  height: 1,
+                                  color: Colors.black26,
+                                )),
+                          ],
+                        ),
+                        SizedBox(height: 5.0),
+                        UserLocation(),
+                      ],
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          ),
-          Pinned.fromPins(
-            Pin(start: -2.1, end: -0.7),
-            Pin(size: 106.2, end: -1.0),
-            child:
-            // Adobe XD layer: 'BottomNavigationBar' (group)
-            Stack(
-              children: <Widget>[
-                Pinned.fromPins(
-                  Pin(start: 0.0, end: 0.0),
-                  Pin(start: 0.0, end: 0.0),
-                  child:
-                  // Adobe XD layer: 'BottomNavigationBar' (shape)
-                  SvgPicture.string(
-                    _svg_expwsp,
-                    allowDrawingOutsideViewBox: true,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                Pinned.fromPins(
-                  Pin(size: 40.0, middle: 0.8151),
-                  Pin(size: 40.0, middle: 0.5014),
-                  child:
-                  // Adobe XD layer: 'notifications' (shape)
-                  PageLink(
-                    links: [
-                      PageLinkInfo(
-                        transition: LinkTransition.PushLeft,
-                        ease: Curves.easeOut,
-                        duration: 0.3,
-                        pageBuilder: () => XDNotificationsAlert(),
+                SizedBox(height: height*0.03,),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: shadowColor,
+                        offset: Offset.zero,
+                        blurRadius: 15,
                       ),
                     ],
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: const AssetImage(''),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
                   ),
-                ),
-                Pinned.fromPins(
-                  Pin(size: 40.0, middle: 0.1887),
-                  Pin(size: 40.0, middle: 0.5014),
-                  child:
-                  // Adobe XD layer: 'home' (shape)
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: const AssetImage(''),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ),
-                Pinned.fromPins(
-                  Pin(size: 40.0, middle: 0.5019),
-                  Pin(size: 40.0, middle: 0.5014),
-                  child:
-                  // Adobe XD layer: 'fireStations' (shape)
-                  PageLink(
-                    links: [
-                      PageLinkInfo(
-                        transition: LinkTransition.PushLeft,
-                        ease: Curves.easeOut,
-                        duration: 0.3,
-                        pageBuilder: () => XDFireStationsAlert(),
-                      ),
-                    ],
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: const AssetImage(''),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
+                  child: FlatButton(
+                    child: Text('CANCEL', style: normalRed),
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=> Home()));
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(1000)
                     ),
                   ),
                 ),
               ],
             ),
           ),
-        ]),
+          BottomBarRed(),
+        ],
+      ),
     );
   }
 }

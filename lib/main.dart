@@ -1,12 +1,15 @@
 import 'package:fire_service/bg/alert_bg.dart';
 import 'package:fire_service/bg/menu_alert.dart';
 import 'package:fire_service/bg/terms_conditions.dart';
+import 'package:fire_service/map/map.dart';
 import 'package:fire_service/screens/account.dart';
 import 'package:fire_service/login/login.dart';
 import 'package:fire_service/onboard/onboarding.dart';
+import 'package:fire_service/screens/emergency_map.dart';
 import 'package:fire_service/test/test_color.dart';
 import 'package:fire_service/views/profile_view.dart';
 import 'package:fire_service/widgets/app_bar.dart';
+import 'package:fire_service/widgets/map_drawer.dart';
 import 'package:fire_service/widgets/sos_button.dart';
 import 'package:fire_service/xd/xd_account.dart';
 import 'package:fire_service/xd/xd_alert_call.dart';
@@ -34,6 +37,7 @@ void main() async{
       MaterialApp(
         title: "Fire Service",
         home: MyApp(),
+        debugShowCheckedModeBanner: false,
       )
   );
 }
@@ -43,7 +47,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      // debugShowCheckedModeBanner: false,
       title: '192',
       theme: ThemeData(
         primaryColor: Colors.cyan,
@@ -53,7 +57,8 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.red,
         fontFamily: 'Montserrat',
       ),
-      home: TestColor(),
+      home: OnBoarding(),
+      // home: MapScreen(),
     );
   }
 }

@@ -24,7 +24,7 @@ final noteColor = Colors.black26;
 final button = GoogleFonts.montserrat(fontStyle:FontStyle.normal, fontSize: 80, fontWeight: FontWeight.w500, color: white);
 
 final titleRed = GoogleFonts.montserrat(fontStyle: FontStyle.normal, fontSize: 30, fontWeight: FontWeight.w800, letterSpacing: 0.1, color: red);
-final titleWhite = GoogleFonts.montserrat(fontStyle: FontStyle.normal, fontSize: 40, fontWeight: FontWeight.w800, letterSpacing: 0.1, color: white);
+final titleWhite = GoogleFonts.montserrat(fontStyle: FontStyle.normal, fontSize: 30, fontWeight: FontWeight.w800, letterSpacing: 0.1, color: white);
 final titleBlue = GoogleFonts.montserrat(fontStyle: FontStyle.normal, fontSize: 30, fontWeight: FontWeight.w800, letterSpacing: 0.1, color: blue);
 final titleBlack = GoogleFonts.montserrat(fontStyle: FontStyle.normal, fontSize: 30, fontWeight: FontWeight.w800, letterSpacing: 0.1, color: black);
 

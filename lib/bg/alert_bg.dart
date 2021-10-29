@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:fire_service/Strings/strings.dart';
 import 'package:fire_service/map/get_user_location.dart';
 import 'package:fire_service/screens/timer.dart';
 import 'package:fire_service/widgets/app_bar.dart';
+import 'package:fire_service/widgets/app_bar_red.dart';
 import 'package:fire_service/widgets/bottom_bar.dart';
+import 'package:fire_service/widgets/bottom_bar_red.dart';
 import 'package:fire_service/widgets/menu_drawer.dart';
 import 'package:fire_service/xd/xd_alert_call.dart';
 import 'package:fire_service/xd/xd_fire_stations_alert.dart';
@@ -26,13 +30,15 @@ class AlertMode extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
+    Timer(Duration(seconds: 5), () => Navigator.push(context,
+        MaterialPageRoute(builder: (_)=> AlertCall())));
     return Scaffold(
       drawer: MenuDrawer(),
       backgroundColor: const Color(0xfffc617e),
       body:
       Stack(
         children: <Widget>[
-          AppBarNav(),
+          AppBarRed(),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -62,17 +68,6 @@ class AlertMode extends StatelessWidget {
                           style: boldRed,
                           textAlign: TextAlign.center,
                         ),
-                        // SizedBox(height: 10.0),
-                        // Text(
-                        //   'Mr. Calix,',
-                        //   style: normalBlack,
-                        //   textAlign: TextAlign.center,
-                        // ),
-                        // Text(
-                        //   'you are about to\ncall national fire service.',
-                        //   style: tinyBlack,
-                        //   textAlign: TextAlign.center,
-                        // ),
                         SizedBox(height: 10,),
                         Text(
                           'This call will start automatically in:',
@@ -98,22 +93,7 @@ class AlertMode extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 5.0),
-                        // UserLocation(),
-                        // Text(
-                        //   'Lat: 5.57888  |  Long: -0.23261',
-                        //   style: smallGrey,
-                        //   textAlign: TextAlign.center,
-                        // ),
-                        Text(
-                          'Sam Street, Accra,',
-                          style: smallGrey,
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          'GA, Ghana',
-                          style: smallGrey,
-                          textAlign: TextAlign.center,
-                        ),
+                        UserLocation(),
                         SizedBox(height: 20.0),
                         Container(
                           decoration: BoxDecoration(
@@ -167,12 +147,18 @@ class AlertMode extends StatelessWidget {
               ],
             ),
           ),
-          BottomBar(),
+          BottomBarRed(),
         ],
       ),
     );
   }
 }
 
+
+
+CallTimers() {
+}
+
 const String _svg_otp6zh =
     '<svg viewBox="59.0 402.0 296.0 1.0" ><defs><filter id="shadow"><feDropShadow dx="0" dy="3" stdDeviation="11"/></filter></defs><path transform="translate(59.0, 402.0)" d="M 0 0 L 296 0" fill="none" stroke="#aaaaaa" stroke-width="1" stroke-opacity="0.5" stroke-miterlimit="4" stroke-linecap="butt" filter="url(#shadow)"/></svg>';
+

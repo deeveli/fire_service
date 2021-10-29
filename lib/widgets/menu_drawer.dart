@@ -1,4 +1,6 @@
+import 'package:fire_service/login/login.dart';
 import 'package:fire_service/xd/xd_terms_conditions_alert.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
 import 'package:adobe_xd/page_link.dart';
@@ -102,6 +104,33 @@ class MenuDrawer extends StatelessWidget {
                       'Report Issue',
                       style: bold_black
                   ),
+                ),PageLink(
+                  links: [
+                    PageLinkInfo(
+                      transition: LinkTransition.SlideRight,
+                      ease: Curves.easeOut,
+                      duration: 0.3,
+                      pageBuilder: () => XDTermsConditionsAlert(),
+                    ),
+                  ],
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.logout),
+                        onPressed: () async {
+                          await FirebaseAuth.instance.signOut();
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (context) => Login()),
+                                  (route) => false);
+                        },
+                      ),
+                      Text(
+                          'SignOut',
+                          style: bold_black
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -109,5 +138,10 @@ class MenuDrawer extends StatelessWidget {
           ],
     );
   }
-
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   uid = FirebaseAuth.instance.currentUser.uid;
+  // }
 }

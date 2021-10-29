@@ -69,7 +69,7 @@ class _AccountState extends State<Account> {
                       SizedBox(height: 25),
                       Text("Phone Number", style: phoneField, textAlign: TextAlign.center,),
                       SizedBox(height: 5),
-                      TEXTField(),
+                      // TEXTField(),
                       SizedBox(height: 20),
                       Container(
                           width: width*0.70,

@@ -17,46 +17,11 @@ class _UserLocationState extends State<UserLocation> {
 
 
   String currentAddress = "";
-  // Position currentPosition;
 
-  // Future<Position> getPosition() async{
-  //   bool serviceEnabled;
-  //   LocationPermission permission;
-  //
-  //   serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  //   if(!serviceEnabled){
-  //     Fluttertoast.showToast(msg: " Please turn on location for device.");
-  //   }
-  //   permission = await Geolocator.checkPermission();
-  //   if(permission == LocationPermission.denied){
-  //     Fluttertoast.showToast(msg: " Location Permission is denied.");
-  //   }
-  //   permission = await Geolocator.checkPermission();
-  //   if(permission == LocationPermission.deniedForever){
-  //     Fluttertoast.showToast(msg: " Location Permission is denied forever.");
-  //   }
-    // Position position = await Geolocator.getCurrentPosition(
-    // desiredAccuracy: LocationAccuracy.high
-    // );
-  //   try{
-  //     List<Placemark>placeMark = await placemarkFromCoordinates(position.latitude, position.longitude);
-  //     Placemark place = placeMark[0];
-  //
-  //     setState((){
-  //       // currentPosition = position;
-  //       currentAddress = "${place.street},\n${place.locality}, ${place.country}";
-  //     });
-  //   }
-  //   catch(e){
-  //     print(e);
-  //   }
-  // }
 
 
   var currentLocation= "";
-  // // var currentLatLocation= "";
-  // // var currentLongLocation= "";
-  //
+
   void getCurrentLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -84,15 +49,12 @@ class _UserLocationState extends State<UserLocation> {
 
     setState((){
       currentLocation = "Lat: $lat, Long: $long";
-      // currentLatLocation = "Lat: $lat";
-      // currentLongLocation = "Long: $long";
     });
     try{
       List<Placemark>placeMark = await placemarkFromCoordinates(position.latitude, position.longitude);
       Placemark place = placeMark[0];
 
       setState((){
-        // currentPosition = position;
         currentAddress = "${place.street},\n${place.locality}, ${place.country}";
       });
     }
@@ -100,6 +62,7 @@ class _UserLocationState extends State<UserLocation> {
       print(e);
     }
     print("$currentAddress");
+    final currentAddressText = currentAddress;
   }
 
   @override
@@ -107,22 +70,21 @@ class _UserLocationState extends State<UserLocation> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text("$currentLocation", style: smallGrey),
-            Text("$currentAddress", style: smallBlack),
-            SizedBox(height: height*0.04),
-            FlatButton(onPressed: () {
-              // getCurrentLocation();
-              getCurrentLocation();
-            },
-            child: SOS(),),
-          ],
-        ),
+    return Container(
+      width: width*0.6,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text("$currentLocation", style: smallGrey, textAlign: TextAlign.center,),
+          Text("$currentAddress", style: smallBlack, textAlign: TextAlign.center,),
+          Text(""),
+          // FlatButton(onPressed: () {
+          //   // getCurrentLocation();
+          //   getCurrentLocation();
+          // },
+          // child: Text(""),),
+        ],
       ),
     );
   }

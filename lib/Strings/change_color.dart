@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 //       ],
 //     );
 //   }
-import 'package:fire_service/Strings/strings.dart';
 import 'package:fire_service/bg/alert_call.dart';
 import 'package:fire_service/bg/home.dart';
 import 'package:fire_service/map/get_user_location.dart';

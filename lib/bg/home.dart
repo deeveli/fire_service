@@ -41,51 +41,45 @@ class _HomeState extends State<Home> {
       backgroundColor: white,
       body: Stack(
         children: <Widget>[
-          PageView(
+          Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FireStations(),
-              Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell( onTap: (){
-                    startTimer();
-                  },
-                    child: FlatButton(
-                      child: SOS(),
-                      onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (_)=> AlertMode()));
-                          // getCurrentLocation();
-                        },
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(1000)
-                      ),
-                    ),
+              InkWell( onTap: (){
+                startTimer();
+              },
+                child: FlatButton(
+                  child: SOS(),
+                  onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=> AlertMode()));
+                      // getCurrentLocation();
+                    },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(1000)
                   ),
-                  SizedBox(height: 40),
-                  Container(
-                    width: width*0.75,
-                    child: Column(
-                      children: [
-                        Text(
-                          'TAP BUTTON!', style: boldRed, textAlign: TextAlign.center,
-                        ),
-                        SizedBox(height: 5,),
-                        Text(
-                          'After pressing the SOS button, you will get help in 5 - 10 minutes',
-                          style: normalGrey, textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ),
-
-                ],
-
+                ),
               ),
-            ),
-              Notifications(),
-            ]
+              SizedBox(height: 40),
+              Container(
+                width: width*0.75,
+                child: Column(
+                  children: [
+                    Text(
+                      'TAP BUTTON!', style: boldRed, textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 5,),
+                    Text(
+                      'After pressing the SOS button, you will get help in 5 - 10 minutes',
+                      style: normalGrey, textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+
+            ],
+
           ),
+            ),
           AppBarNav(),
           BottomBar(),
         ],

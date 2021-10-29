@@ -3,13 +3,12 @@ import 'package:fire_service/views/profile/avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fire_service/Strings/strings.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 import '../locator.dart';
 
 class ProfilePicture extends StatefulWidget {
-  const ProfilePicture({Key? key}) : super(key: key);
-
   static String route = "profile-view";
 
   @override
@@ -35,7 +34,10 @@ class _ProfilePictureState extends State<ProfilePicture> {
       ),
       child: Avatar(
         avatarUrl: "assets/img/2.png",
-        onTap: () {},
+        // avatarUrl: currentUser?.avatarUrl,
+        onTap: () async {
+          await ImagePicker.platform;
+        },
       ),
 
 
